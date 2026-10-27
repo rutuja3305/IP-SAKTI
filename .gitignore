@@ -1,0 +1,32 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+
+# Backend
+backend/__pycache__/
+backend/.venv/
+backend/venv/
+backend/.env
+backend/.env.*
+
+# General
+*.pyc
+.env
+.env.*
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# RAG knowledge-base documents (keep locally)
+backend/data/documents/RAG_Knowledge_Base/
+
+# Dependencies and generated files
+node_modules/
+dist/
+__pycache__/
+.venv/
+venv/

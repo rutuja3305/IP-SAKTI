@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base resets & root ───────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-parchment text-ink font-sans;
+    min-height: 100vh;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Heading defaults — Inter by default, serif for .font-display overrides */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-forest-dark font-sans font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img, svg {
+    display: block;
+  }
+
+  /* Remove default button styles */
+  button {
+    cursor: pointer;
+  }
+
+  /* Focus ring — accessible and on-brand */
+  :focus-visible {
+    outline: 2px solid #C4952A;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ─── Component utilities ───────────────────────────────────────────── */
+@layer components {
+  /* Site-wide max width container */
+  .container-site {
+    @apply max-w-site mx-auto px-6 lg:px-10 xl:px-16;
+  }
+
+  /* Section vertical spacing */
+  .section-padding {
+    @apply py-section;
+  }
+  .section-padding-sm {
+    @apply py-section-sm;
+  }
+
+  /* Eyebrow label base style */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-eyebrow text-gold;
+  }
+
+  /* Gold rule — thin decorative horizontal line in gold */
+  .gold-rule {
+    @apply block w-10 h-0.5 bg-gold mt-2 mb-4;
+  }
+
+  /* Nav link base */
+  .nav-link {
+    @apply text-sm font-medium text-ink-muted hover:text-forest-dark transition-colors duration-200 relative;
+  }
+
+  .nav-link.active {
+    @apply text-forest-dark;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-forest-dark rounded-full;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* Scrollbar styling — webkit only */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-forest-mid/30 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-forest-mid/50;
+  }
+}
+
+/* ─── Typography overrides for Knowledge Atlas prose ────────────────── */
+@layer utilities {
+  .prose-ipsakti {
+    @apply prose prose-lg max-w-none;
+  }
+
+  /* Ensure Inter is the global font, Georgia only for display class */
+  .font-display-serif {
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+}
+
+/* ─── Hero carousel progress bar ────────────────────────────────────────────── */
+@keyframes heroProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
